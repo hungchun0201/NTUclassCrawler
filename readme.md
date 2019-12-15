@@ -28,7 +28,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --semester SEMESTER   Select the semester you want to query
   --delay-time DELAY    Set the delay time between each request
-  --tor                 (NOT IMPLETEMENTED)Try to use tor proxy to prevent
+  --tor                 (NOT IMPLEMENTED)Try to use tor proxy to prevent
                         from blocking IP by the website
   -p PAGE, --page PAGE  Assign the maximum page
   -s [SAVE], --save [SAVE]
