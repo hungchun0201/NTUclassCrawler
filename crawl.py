@@ -34,7 +34,7 @@ class Crawler():
     def parser(self):
         parser = argparse.ArgumentParser(prog='python3 crawl.py', description='''
 
-        This is a program that can crawl data of classes in next semester from \"classroom manage system(上課教室看板)\".
+        This is a program that can crawl data of classes in next semester from \"classroom management system(上課教室看板)\".
         By utilizing this program, you can plan your curriculum early than NTU online. While the information is not quite complete on the website,
         it is still a useful and helpful tool if you want to organize the curriculum in next semester.\n
 

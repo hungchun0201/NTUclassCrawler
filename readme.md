@@ -3,11 +3,17 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom manage system(上課教室看板)". By utilizing this program, you can plan
+"classroom management system(上課教室看板)". By utilizing this program, you can plan
 your curriculum early than NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
 organize the curriculum in next semester. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
+
+## Environment
+<a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
+<img src="https://img.shields.io/badge/python-requests%7Cbeautiful4%7Cpandas%7Ccollections%7Cargparse-blue">
+
+
 
 ## Usage
 
@@ -33,7 +39,7 @@ optional arguments:
                         that college(ex:9),or simply type the name of the
                         building(ex:博雅).
 ```
-You can view all message by typing
+You can view all help message by typing
 ```
 python3 crawl.py -h
 ```
