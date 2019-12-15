@@ -11,7 +11,9 @@ http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 
 ## Environment
 <a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
-<img src="https://img.shields.io/badge/python-requests%7Cbeautiful4%7Cpandas%7Ccollections%7Cargparse-blue">
+
+
+> <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C pandas %7C collections %7C argparse-blue">
 
 
 
