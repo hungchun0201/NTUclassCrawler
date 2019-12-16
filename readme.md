@@ -3,9 +3,9 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(上課教室看板)". With this program, you can schedule/arrange your classes before they come out at NTU online. While the information is not quite
+"classroom management system(上課教室看板)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
-organize the curriculum for next semester. The reference link is
+organize the curriculum for next semester in advance. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 
 ## Environment
