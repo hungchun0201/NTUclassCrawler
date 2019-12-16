@@ -77,7 +77,7 @@ class Crawler():
 
         if(periods[0] == periods[1]):  # only one session
             return day+self.periodDict[periods[0]]
-        else:  # lots of one session
+        else:  # more than one session
             return_str = ""
             addToStr = False
             for session in self.periodDict:
@@ -123,9 +123,8 @@ class Crawler():
                         sub_table = sub_table[0].text
                         sub_table = re.sub(r"[ \t\r\f\v]+", "", sub_table)
                         newCourse = sub_table.split(
-                            '\n')     # split string with \n
-                        # remove '' element in list
-                        newCourse = [x for x in newCourse if x]
+                            '\n')     # split string with \n       
+                        newCourse = [x for x in newCourse if x]# remove '' element in list
                         first_str = newCourse[0].split("：")[0]
 
                         if(first_str != '課程識別碼'):
@@ -173,7 +172,10 @@ class Crawler():
         select_df = pd.DataFrame(class_info)
         print(select_df)
         if(self.args.save):
-            select_df.to_excel(self.args.save)
+            try:
+                select_df.to_excel(self.args.save)
+            except:
+                return
 
 
 if __name__ == '__main__':
