@@ -3,10 +3,9 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(上課教室看板)". By utilizing this program, you can plan
-your curriculum early than NTU online. While the information is not quite
+"classroom management system(上課教室看板)". With this program, you can schedule/arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
-organize the curriculum in next semester. The reference link is
+organize the curriculum for next semester. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 
 ## Environment
@@ -34,7 +33,7 @@ optional arguments:
   -s [SAVE], --save [SAVE]
                         Store the result. You can specify your filename.
                         Please use .xls or .xlsx as filename extension.
-  --building {0,1,2,3,4,5,6,7,8,9,A,B,共同,普通,新生,綜合,博雅,%}
+  --building {1,2,3,4,5,6,7,8,9,A,B,共同,普通,新生,綜合,博雅,%}
                         Specify the building you want to query. If the
                         building belongs to a college(ex:College of Electrical
                         Engineering and Computer Science), use the code of
