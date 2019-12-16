@@ -45,7 +45,7 @@ class Crawler():
             "--semester", help="Select the semester you want to query", default="1082")
 
         parser.add_argument(
-            "--delay-time", help="Set the delay time between each request", type=int, default=2, dest="delay")
+            "--delay-time", help="Set the delay time between each request", type=float, default=0.5, dest="delay")
 
         parser.add_argument(
             "--tor", help="(NOT IMPLETEMENTED)Try to use tor proxy to prevent from blocking IP by the website", action="store_true")
@@ -60,8 +60,8 @@ class Crawler():
         parser.add_argument(
             "--building", help="Specify the building you want to query. \
             If the building belongs to a college(ex:College of Electrical Engineering and Computer Science), \
-            use the code of that college(ex:9),or simply type the name of the building(ex:博雅).", type=int, default=9,
-            choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A",
+            use the code of that college(ex:9),or simply type the name of the building(ex:博雅).", default=9,
+            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, "A",
                      "B", "共同", "普通", "新生", "綜合", "博雅", "%"]
         )
 
@@ -103,7 +103,6 @@ class Crawler():
         last_row = table.find_all("tr")[-1].find("td")
         # print(last_row.findChildren())
         self.args.page = len(last_row.findChildren())
-        
 
     def crawl(self):
 
@@ -120,48 +119,55 @@ class Crawler():
                 doc = doc.text
                 soup = BeautifulSoup(doc, 'html.parser')
                 for sub_table in [table.find_all(['table', 'tbody']) for table in soup.find_all(id="tooltip")]:
-                    sub_table = sub_table[0].text
-                    sub_table = re.sub(r"[ \t\r\f\v]+", "", sub_table)
-                    newCourse = sub_table.split(
-                        '\n')     # split string with \n
-                    # remove '' element in list
-                    newCourse = [x for x in newCourse if x]
-                    first_str = newCourse[0].split("：")[0]
+                    try:
+                        sub_table = sub_table[0].text
+                        sub_table = re.sub(r"[ \t\r\f\v]+", "", sub_table)
+                        newCourse = sub_table.split(
+                            '\n')     # split string with \n
+                        # remove '' element in list
+                        newCourse = [x for x in newCourse if x]
+                        first_str = newCourse[0].split("：")[0]
 
-                    if(first_str != '課程識別碼'):
+                        if(first_str != '課程識別碼'):
+                            continue
+
+                        # Add class number.
+                        # some class is instructed by only one prof,so there is no class number.
+                        if(len(newCourse) == 11):
+                            newCourse.insert(3, "00")
+                        elif(len(newCourse) < 11):
+                            # bad course
+                            continue
+
+                        newCourse[11] = self.transformTime(newCourse[11])
+
+                        # check whether is the same class
+                        endloop = False
+                        for dict in class_info:
+                            if(dict["Course title"] == newCourse[5] and dict["Instructor"] == newCourse[7]):
+                                endloop = True
+                                if(newCourse[11] in dict["time"]):
+                                    break
+                                else:
+                                    dict["time"] = dict["time"] + \
+                                        ' '+newCourse[11]
+                                    break
+                        if(endloop):
+                            continue
+
+                        dict = {
+                            "Curriculum Identity Number": newCourse[1],
+                            "Class": newCourse[3],
+                            "Course title": newCourse[5],
+                            "Instructor": newCourse[7],
+                            "Schedule Classroom": newCourse[9],
+                            "time": newCourse[11],
+                        }
+                        class_info.append(dict)
+                    except:
                         continue
-
-                    # Add class number.
-                    # some class is instructed by only one prof,so there is no class number.
-                    if(len(newCourse) != 12):
-                        newCourse.insert(3, "00")
-
-                    newCourse[11] = self.transformTime(newCourse[11])
-
-                    # check whether is the same class
-                    endloop = False
-                    for dict in class_info:
-                        if(dict["Course title"] == newCourse[5] and dict["Instructor"] == newCourse[7]):
-                            endloop = True
-                            if(newCourse[11] in dict["time"]):
-                                break
-                            else:
-                                dict["time"] = dict["time"] + \
-                                    ' '+newCourse[11]
-                                break
-                    if(endloop):
-                        continue
-
-                    dict = {
-                        "Curriculum Identity Number": newCourse[1],
-                        "Class": newCourse[3],
-                        "Course title": newCourse[5],
-                        "Instructor": newCourse[7],
-                        "Schedule Classroom": newCourse[9],
-                        "time": newCourse[11],
-                    }
-                    class_info.append(dict)
-
+                print("========== Got {} courses information, until Page {} and Day {} ==========".format(
+                    len(class_info), page, week))
                 time.sleep(self.args.delay)
 
         select_df = pd.DataFrame(class_info)
