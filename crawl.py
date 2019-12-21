@@ -75,8 +75,8 @@ Please use .xls or .xlsx as filename extension.''', const="result.xls", action="
             "-b", help='''Specify the building you want to query.
 If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
 use the code of that college(ex:9),or simply type the name of the building(ex:博雅).
-The percentage sign means search for all buildings.''', default=9,
-            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, "A",
+The percentage sign means search for all buildings.''', default=9,dest="building",
+            choices=["1", "2", "3", "4", "5", "6", "7", "8", "9", "A",
                      "B", "共同", "普通", "新生", "綜合", "博雅", "%"]
         )
         parser.add_argument(
@@ -226,6 +226,7 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
             try:
                 select_df.to_excel(self.args.save)
             except:
+                print("Bad Filename!!!")
                 return
 
 
