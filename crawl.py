@@ -75,7 +75,7 @@ Please use .xls or .xlsx as filename extension.''', const="result.xls", action="
             "-b", help='''Specify the building you want to query.
 If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
 use the code of that college(ex:9),or simply type the name of the building(ex:博雅).
-The percentage sign means search for all buildings.''', default=9,dest="building",
+The percentage sign means search for all buildings.''', default=9, dest="building",
             choices=["1", "2", "3", "4", "5", "6", "7", "8", "9", "A",
                      "B", "共同", "普通", "新生", "綜合", "博雅", "%"]
         )
@@ -221,6 +221,17 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                 time.sleep(self.args.delay)
 
         select_df = pd.DataFrame(class_info)
+        if(not select_df.empty):
+            select_df["Id"] = select_df["Id"].map(lambda x: '%-8s' % x)
+            select_df["Class"] = select_df["Class"].map(lambda x: '%-2s' % x)
+            select_df["Title"] = select_df["Title"].map(
+                lambda x: x.ljust(9, chr(12288)))
+            select_df["Instructor"] = select_df["Instructor"].map(
+                lambda x: x.ljust(4, chr(12288)))
+            select_df["Classroom"] = select_df["Classroom"].map(
+                lambda x: '{0:{1}<6}'.format(x, chr(12288)))
+            select_df["Time"] = select_df["Time"].map(
+                lambda x: '{0:{1}<8}'.format(x, chr(12288)))
         print(select_df)
         if(self.args.save):
             try:
