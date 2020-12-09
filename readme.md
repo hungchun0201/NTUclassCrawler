@@ -12,7 +12,7 @@ http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 <a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
 
 
-> <img src="https://img.shields.io/badge/python-requests %7C BeautifulSoup4 %7C pandas %7C openpyxl %7C argparse-blue">
+> <img src="https://img.shields.io/badge/python-BeautifulSoup4 %7C pandas %7C openpyxl %7C argparse %7C requests-blue">
 
 
 
@@ -21,11 +21,15 @@ http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 ```
 python3 crawl.py
 ```
+It is recommended to store the result into excel. To store your result, you can type
+```
+python3 crawl.py --save [FILENAME].xls
+```
 ## Optional Arguments
 ```
 optional arguments:
   -h, --help            show this help message and exit
-  --semester SEMESTER   Select the semester you want to query
+  --semester SEMESTER   Select the semester you want to query. The default value is 1082
   --delay-time DELAY    Set the delay time between each request
   --tor                 (NOT IMPLETEMENTED)Try to use tor proxy to prevent from blocking IP by the website
   -p PAGE, --page PAGE  Assign the maximum page
@@ -68,7 +72,7 @@ If you want to find the class whose name is 機器學習 in EECS and store the r
 ```
 python3 crawl.py --search-opt Title=機器學習 --save ML.xls -b 9
 ```
-or maybe you just want to find the classes teached in Bioresources and Agriculture college,you can just type
+or maybe you just want to find the classes teached in Bioresources and Agriculture college, you can just type
 ```
 python3 crawl.py -b 6
 ```
