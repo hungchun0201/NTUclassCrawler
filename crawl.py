@@ -56,7 +56,7 @@ class Crawler():
         ''', epilog="Designed by Hung-Chun,Lin.", formatter_class=argparse.RawTextHelpFormatter)
 
         parser.add_argument(
-            "--semester", help="Select the semester you want to query", default="1082")
+            "--semester", help="Select the semester you want to query", default="1092")
 
         parser.add_argument(
             "--delay-time", help="Set the delay time between each request", type=float, default=0, dest="delay")
