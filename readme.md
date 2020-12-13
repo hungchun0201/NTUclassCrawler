@@ -3,7 +3,7 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(上課教室看板)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
+"classroom management system(上課?�室?�板)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
 organize the curriculum for next semester in advance. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
@@ -36,14 +36,14 @@ optional arguments:
   -s [SAVE], --save [SAVE]
                         Store the result. You can specify your filename.
                         Please use .xls or .xlsx as filename extension.
-  -b {1,2,3,4,5,6,7,8,9,A,B,共同,普通,新生,綜合,博雅,%}
+  -b {1,2,3,4,5,6,7,8,9,A,B,?��?,?��??��?,綜�?,?��?,%}
                         Specify the building you want to query.
                         If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
-                        use the code of that college(ex:9),or simply type the name of the building(ex:博雅).
+                        use the code of that college(ex:9),or simply type the name of the building(ex:?��?).
                         The percentage sign means search for all buildings.
   --search-opt SEARCHOPT
 
-                        Comma separated values to specifiy search options e.g. "Title=積體電路,Classroom=電二"
+                        Comma separated values to specifiy search options e.g. "Title=積�??�路,Classroom=?��?"
                         The avaliable args include:
                             "Id": Curriculum Identity Number
                             "Class": The class number. If the course is teached by only one teacher, it is set to 00
@@ -52,13 +52,13 @@ optional arguments:
                             "Classroom": Schedule Classroom
                             "Time": The time of course
 
-                        For example, if you type "--search-opt Title=積體電路,Classroom=電二", you may get the following result:
+                        For example, if you type "--search-opt Title=積�??�路,Classroom=?��?", you may get the following result:
                                     Id Class        Title Instructor Classroom    Time
-                        0  943U0010    00       積體電路測試        李建模     電二146  二2,3,4
-                        1  921U9590    00  電力電子與積體電路控制        陳景然     電二225  二7,8,9
-                        2  943U0120    00     射頻積體電路設計        陳怡然     電二104  三2,3,4
-                        3  90140500    00       積體電路設計        盧奕璋     電二229  三7,8,9
-                        4  942U0120    00     微波積體電路專題        林坤佑     電二101  四7,8,9
+                        0  943U0010    00       積�??�路測試        ?�建�?    ?��?146  �?,3,4
+                        1  921U9590    00  ?��??��??��?體電路控??       ?�景??    ?��?225  �?,8,9
+                        2  943U0120    00     射頻積�??�路設�?        ?�怡然     ?��?104  �?,3,4
+                        3  90140500    00       積�??�路設�?        ?��???    ?��?229  �?,8,9
+                        4  942U0120    00     微波積�??�路專�?        ?�坤�?    ?��?101  ??,8,9
 
 
 ```
@@ -68,12 +68,20 @@ python3 crawl.py -h
 ```
 ## Examples
 
-If you want to find the class whose name is 機器學習 in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
+If you want to find the class whose name is 機器學�? in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
 ```
-python3 crawl.py --search-opt Title=機器學習 --save ML.xls -b 9
+python3 crawl.py --search-opt Title=機器學�? --save ML.xls -b 9
 ```
 or maybe you just want to find the classes teached in Bioresources and Agriculture college, you can just type
 ```
 python3 crawl.py -b 6
 ```
+## The problem you probably will meet
+
+If you failed to write the data in excel file, try to install openpyxl by typing
+```
+pip install openpyxl
+``` 
+Openpyxl is a Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files. Without it, you would be failed to write the data in excel file 
+
 
