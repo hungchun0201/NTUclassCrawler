@@ -3,7 +3,7 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(¤W½Ò±Ğ«Ç¬İªO)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
+"classroom management system(ä¸Šèª²æ•™å®¤çœ‹æ¿)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
 organize the curriculum for next semester in advance. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
@@ -36,14 +36,14 @@ optional arguments:
   -s [SAVE], --save [SAVE]
                         Store the result. You can specify your filename.
                         Please use .xls or .xlsx as filename extension.
-  -b {1,2,3,4,5,6,7,8,9,A,B,¦@¦P,´¶³q,·s¥Í,ºî¦X,³Õ¶®,%}
+  -b {1,2,3,4,5,6,7,8,9,A,B,å…±åŒ,æ™®é€š,æ–°ç”Ÿ,ç¶œåˆ,åšé›…,%}
                         Specify the building you want to query.
                         If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
-                        use the code of that college(ex:9),or simply type the name of the building(ex:³Õ¶®).
+                        use the code of that college(ex:9),or simply type the name of the building(ex:åšé›…).
                         The percentage sign means search for all buildings.
   --search-opt SEARCHOPT
 
-                        Comma separated values to specifiy search options e.g. "Title=¿nÅé¹q¸ô,Classroom=¹q¤G"
+                        Comma separated values to specifiy search options e.g. "Title=ç©é«”é›»è·¯,Classroom=é›»äºŒ"
                         The avaliable args include:
                             "Id": Curriculum Identity Number
                             "Class": The class number. If the course is teached by only one teacher, it is set to 00
@@ -52,13 +52,13 @@ optional arguments:
                             "Classroom": Schedule Classroom
                             "Time": The time of course
 
-                        For example, if you type "--search-opt Title=¿nÅé¹q¸ô,Classroom=¹q¤G", you may get the following result:
+                        For example, if you type "--search-opt Title=ç©é«”é›»è·¯,Classroom=é›»äºŒ", you may get the following result:
                                     Id Class        Title Instructor Classroom    Time
-                        0  943U0010    00       ¿nÅé¹q¸ô´ú¸Õ        §õ«Ø¼Ò     ¹q¤G146  ¤G2,3,4
-                        1  921U9590    00  ¹q¤O¹q¤l»P¿nÅé¹q¸ô±±¨î        ³¯´ºµM     ¹q¤G225  ¤G7,8,9
-                        2  943U0120    00     ®gÀW¿nÅé¹q¸ô³]­p        ³¯©ÉµM     ¹q¤G104  ¤T2,3,4
-                        3  90140500    00       ¿nÅé¹q¸ô³]­p        ¿c«³¼ı     ¹q¤G229  ¤T7,8,9
-                        4  942U0120    00     ·Lªi¿nÅé¹q¸ô±MÃD        ªL©[¦ö     ¹q¤G101  ¥|7,8,9
+                        0  943U0010    00       ç©é«”é›»è·¯æ¸¬è©¦        æå»ºæ¨¡     é›»äºŒ146  äºŒ2,3,4
+                        1  921U9590    00  é›»åŠ›é›»å­èˆ‡ç©é«”é›»è·¯æ§åˆ¶        é™³æ™¯ç„¶     é›»äºŒ225  äºŒ7,8,9
+                        2  943U0120    00     å°„é »ç©é«”é›»è·¯è¨­è¨ˆ        é™³æ€¡ç„¶     é›»äºŒ104  ä¸‰2,3,4
+                        3  90140500    00       ç©é«”é›»è·¯è¨­è¨ˆ        ç›§å¥•ç’‹     é›»äºŒ229  ä¸‰7,8,9
+                        4  942U0120    00     å¾®æ³¢ç©é«”é›»è·¯å°ˆé¡Œ        æ—å¤ä½‘     é›»äºŒ101  å››7,8,9
 
 
 ```
@@ -68,14 +68,15 @@ python3 crawl.py -h
 ```
 ## Examples
 
-If you want to find the class whose name is ¾÷¾¹¾Ç²ß in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
+If you want to find the class whose name is æ©Ÿå™¨å­¸ç¿’ in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
 ```
-python3 crawl.py --search-opt Title=¾÷¾¹¾Ç²ß --save ML.xls -b 9
+python3 crawl.py --search-opt Title=æ©Ÿå™¨å­¸ç¿’ --save ML.xls -b 9
 ```
 or maybe you just want to find the classes teached in Bioresources and Agriculture college, you can just type
 ```
 python3 crawl.py -b 6
 ```
+
 ## The problem you probably will meet
 
 If you failed to write the data in excel file, try to install openpyxl by typing
