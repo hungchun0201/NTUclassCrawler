@@ -3,7 +3,7 @@
 ## Introduction
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(‰∏äË™≤?ôÂÆ§?ãÊùø)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
+"classroom management system(§WΩ“±–´«¨›™O)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
 organize the curriculum for next semester in advance. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
@@ -36,14 +36,14 @@ optional arguments:
   -s [SAVE], --save [SAVE]
                         Store the result. You can specify your filename.
                         Please use .xls or .xlsx as filename extension.
-  -b {1,2,3,4,5,6,7,8,9,A,B,?±Â?,?ÆÈÄ??∞Á?,Á∂úÂ?,?öÈ?,%}
+  -b {1,2,3,4,5,6,7,8,9,A,B,¶@¶P,¥∂≥q,∑s•Õ,∫Ó¶X,≥’∂Æ,%}
                         Specify the building you want to query.
                         If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
-                        use the code of that college(ex:9),or simply type the name of the building(ex:?öÈ?).
+                        use the code of that college(ex:9),or simply type the name of the building(ex:≥’∂Æ).
                         The percentage sign means search for all buildings.
   --search-opt SEARCHOPT
 
-                        Comma separated values to specifiy search options e.g. "Title=Á©çÈ??ªË∑Ø,Classroom=?ª‰?"
+                        Comma separated values to specifiy search options e.g. "Title=øn≈Èπq∏Ù,Classroom=πq§G"
                         The avaliable args include:
                             "Id": Curriculum Identity Number
                             "Class": The class number. If the course is teached by only one teacher, it is set to 00
@@ -52,13 +52,13 @@ optional arguments:
                             "Classroom": Schedule Classroom
                             "Time": The time of course
 
-                        For example, if you type "--search-opt Title=Á©çÈ??ªË∑Ø,Classroom=?ª‰?", you may get the following result:
+                        For example, if you type "--search-opt Title=øn≈Èπq∏Ù,Classroom=πq§G", you may get the following result:
                                     Id Class        Title Instructor Classroom    Time
-                        0  943U0010    00       Á©çÈ??ªË∑ØÊ∏¨Ë©¶        ?éÂª∫Ê®?    ?ª‰?146  ‰∫?,3,4
-                        1  921U9590    00  ?ªÂ??ªÂ??áÁ?È´îÈõªË∑ØÊéß??       ?≥ÊôØ??    ?ª‰?225  ‰∫?,8,9
-                        2  943U0120    00     Â∞ÑÈ†ªÁ©çÈ??ªË∑ØË®≠Ë?        ?≥ÊÄ°ÁÑ∂     ?ª‰?104  ‰∏?,3,4
-                        3  90140500    00       Á©çÈ??ªË∑ØË®≠Ë?        ?ßÂ???    ?ª‰?229  ‰∏?,8,9
-                        4  942U0120    00     ÂæÆÊ≥¢Á©çÈ??ªË∑ØÂ∞àÈ?        ?óÂù§‰Ω?    ?ª‰?101  ??,8,9
+                        0  943U0010    00       øn≈Èπq∏Ù¥˙∏’        ßı´ÿº“     πq§G146  §G2,3,4
+                        1  921U9590    00  πq§Oπq§lªPøn≈Èπq∏Ù±±®Ó        ≥Ø¥∫µM     πq§G225  §G7,8,9
+                        2  943U0120    00     Æg¿Wøn≈Èπq∏Ù≥]≠p        ≥Ø©…µM     πq§G104  §T2,3,4
+                        3  90140500    00       øn≈Èπq∏Ù≥]≠p        øc´≥º˝     πq§G229  §T7,8,9
+                        4  942U0120    00     ∑L™iøn≈Èπq∏Ù±M√D        ™L©[¶ˆ     πq§G101  •|7,8,9
 
 
 ```
@@ -68,9 +68,9 @@ python3 crawl.py -h
 ```
 ## Examples
 
-If you want to find the class whose name is Ê©üÂô®Â≠∏Á? in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
+If you want to find the class whose name is æ˜æπæ«≤ﬂ in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
 ```
-python3 crawl.py --search-opt Title=Ê©üÂô®Â≠∏Á? --save ML.xls -b 9
+python3 crawl.py --search-opt Title=æ˜æπæ«≤ﬂ --save ML.xls -b 9
 ```
 or maybe you just want to find the classes teached in Bioresources and Agriculture college, you can just type
 ```
