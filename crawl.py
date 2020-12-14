@@ -237,7 +237,7 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
             try:
                 select_df.to_excel(self.args.save)
             except:
-                print("Bad Filename!!!\nWarning:You probably  did not install openpyxl first, type \"pip install openpyxl\" to install the package ")
+                print("Bad Filename!!!\nWarning:You probably did not install openpyxl first, type \"pip install openpyxl\" to install the package ")
                 return
 
 

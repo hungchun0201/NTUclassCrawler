@@ -77,12 +77,5 @@ or maybe you just want to find the classes teached in Bioresources and Agricultu
 python3 crawl.py -b 6
 ```
 
-## The problem you probably will meet
-
-If you failed to write the data in excel file, try to install openpyxl by typing
-```
-pip install openpyxl
-``` 
-Openpyxl is a Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files. Without it, you would be failed to write the data in excel file 
 
 
