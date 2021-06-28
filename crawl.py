@@ -4,7 +4,7 @@ import re
 import pandas as pd
 import time
 import argparse
-
+import ast
 
 class Crawler():
 
@@ -56,7 +56,7 @@ class Crawler():
         ''', epilog="Designed by Hung-Chun,Lin.", formatter_class=argparse.RawTextHelpFormatter)
 
         parser.add_argument(
-            "--semester", help="Select the semester you want to query", default="1092")
+            "--semester", help="Select the semester you want to query", default="1101")
 
         parser.add_argument(
             "--delay-time", help="Set the delay time between each request", type=float, default=0, dest="delay")
@@ -65,7 +65,7 @@ class Crawler():
             "--tor", help="(NOT IMPLETEMENTED)Try to use tor proxy to prevent from blocking IP by the website", action="store_true")
 
         parser.add_argument(
-            "-p", "--page", help="Assign the maximum page", type=int)
+            "-p", "--page", help="Assign the maximum page of each day.", type=int)
 
         parser.add_argument(
             "-s", "--save", help='''Store the result. You can specify your filename.
@@ -110,7 +110,7 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
 
     def transformTime(self, time):
         day = time[1]
-        periods = time[3:]
+        periods = time[4:]
         periods = periods.split('~')
 
         if(periods[0] == periods[1]):  # only one session
@@ -168,36 +168,35 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                     })
                 doc.encoding = 'UTF-8'
                 doc = doc.text
-                print(doc)
-                soup = BeautifulSoup(doc, 'html.parser')
-                print(soup.find_all(id="ClassTimeGV")[0].text)
-                for sub_table in [table.find_all(['table', 'tbody']) for table in soup.find_all(id="ClassTimeGV")]:
-                    try:
-                        sub_table = sub_table[0].text
-                        sub_table = re.sub(r"[ \t\r\f\v]+", "", sub_table)
-                        newCourse = sub_table.split(
-                            '\n')     # split string with \n
-                        # remove '' element in list
-                        newCourse = [x for x in newCourse if x]
-                        first_str = newCourse[0].split("：")[0]
-                        if(first_str != '課程識別碼'):
-                            continue
-
+                soup = BeautifulSoup(doc, 'lxml')
+                script = soup.select("#ContentPlaceHolder1 > script")[0]
+                # All course data in this page can be found in varaible timeDT
+                map_search = re.search('timeDT\s*=\s*(.*?}])\s*;', str(script))
+                # Convert to array from string
+                course_info = ast.literal_eval(map_search[1])
+                for classroom in course_info:
+                    if(len(classroom.keys())==2):
+                        continue
+                    Sessions = list(classroom.keys())
+                    Sessions.remove("Item")
+                    Sessions.remove("Msg")
+                    for session in Sessions:
+                        course = classroom[session]["Info"][0]
                         # Add class number.
                         # some class is instructed by only one prof,so there is no class number.
-                        if(len(newCourse) == 11):
-                            newCourse.insert(3, "00")
-                        elif(len(newCourse) < 11):
+                        if(course['cr_clas'] == ''):
+                            course['cr_clas'] = "00"
+                        else:
                             # bad course
                             continue
-                        # print("oo")
+
                         dict = {
-                            "Id": newCourse[1],  # Curriculum Identity Number
-                            "Class": newCourse[3],
-                            "Title": newCourse[5],  # Course title
-                            "Instructor": newCourse[7],
-                            "Classroom": newCourse[9],  # Schedule Classroom
-                            "Time": newCourse[11],
+                            "Id": course['cr_cono'],  # Curriculum Identity Number
+                            "Class": course['cr_clas'],
+                            "Title": course['cr_cnam'],  # Course title
+                            "Instructor": course['cr_tenam'],
+                            "Classroom": course['cr_no'],  # Schedule Classroom
+                            "Time": course['cr_time'],
                         }
                         dict["Time"] = self.transformTime(dict["Time"])
 
@@ -220,8 +219,7 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                             continue
 
                         class_info.append(dict)
-                    except:
-                        continue
+
                 print("========== Got", len(
                     class_info), "courses information, until Page", page, "and Day", week, "==========")
                 time.sleep(self.args.delay)
@@ -243,11 +241,10 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
             try:
                 select_df.to_excel(self.args.save)
             except:
-                print("Bad Filename!!!")
+                print("Bad Filename!!! \nWarning:You probably did not install openpyxl first, type \"pip install openpyxl\" to install the package.")
                 return
 
 
 if __name__ == '__main__':
-    print("hi")
     crawler = Crawler()
     crawler.crawl()

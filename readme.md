@@ -27,7 +27,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --semester SEMESTER   Select the semester you want to query
   --delay-time DELAY    Set the delay time between each request
-  -p PAGE, --page PAGE  Assign the maximum page
+  -p PAGE, --page PAGE  Assign the maximum page of each day.
   -s [SAVE], --save [SAVE]
                         Store the result. You can specify your filename.
                         Please use .xls or .xlsx as filename extension.
@@ -44,7 +44,7 @@ optional arguments:
                             "Class": The class number. If the course is teached by only one teacher, it is set to 00
                             "Title": Course title
                             "Instructor": Teacher name
-                            "Classroom": Schedule Classroom
+                            "Classroom": Schedule Classroom 
                             "Time": The time of course
 
                         For example, if you type "--search-opt Title=積體電路,Classroom=電二", you may get the following result:
