@@ -7,6 +7,7 @@ This is a program that can crawl data of classes in next semester from
 complete on the website, it is still a useful and helpful tool if you want to
 organize the curriculum for next semester in advance. The reference link is
 http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
+<img src="./sample.gif">
 
 ## Environment
 <a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
