@@ -36,6 +36,7 @@ optional arguments:
                         If the building belongs to a college(ex:College of Electrical Engineering and Computer Science),
                         use the code of that college(ex:9),or simply type the name of the building(ex:博雅).
                         The percentage sign means search for all buildings.
+                        The default is set as 9.
   --search-opt SEARCHOPT
 
                         Comma separated values to specifiy search options e.g. "Title=積體電路,Classroom=電二"
@@ -65,10 +66,15 @@ python3 crawl.py -h
 
 If you want to find the class whose name is 機器學習 in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
 ```
-python3 crawl.py --search-opt Title=機器學習 --save ML.xls -b 9
+python3 crawl.py --search-opt Title=機器學習 --save ML.xls -b 9 --semester 1101
 ```
-or maybe you just want to find the classes teached in Bioresources and Agriculture college,you can just type
+or maybe you just want to find the classes teached in Bioresources and Agriculture college, and save it locally. You can just type
 ```
-python3 crawl.py -b 6
+python3 crawl.py -b 6 --save Agri.xlsx --semester 1101
+```
+A common way of using this program is to download all of the course into a xlsx file, and you can search directly in the xlsx file.
+(It may take a while since you want to go through all of the pages in the website.)
+```
+python3 crawl.py -b % --save course.xlsx --semester 1101
 ```
 
