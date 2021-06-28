@@ -15,12 +15,6 @@ http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
 > <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C pandas %7C argparse-blue">
 
 
-
-## Usage
-
-```
-python3 crawl.py
-```
 ## Optional Arguments
 ```
 optional arguments:
@@ -63,6 +57,7 @@ You can view all help message by typing
 python3 crawl.py -h
 ```
 ## Examples
+> The default of the building is set as 9 (EECS). Remener to specify the -b option.
 
 If you want to find the class whose name is 機器學習 in EECS and store the result to excel with filename <code>ML.xls</code>, you can use
 ```
@@ -72,8 +67,8 @@ or maybe you just want to find the classes teached in Bioresources and Agricultu
 ```
 python3 crawl.py -b 6 --save Agri.xlsx --semester 1101
 ```
-A common way of using this program is to download all of the course into a xlsx file, and you can search directly in the xlsx file.
-(It may take a while since you want to go through all of the pages in the website.)
+A common way of using this program is to download all of the courses into a xlsx file, and you can search directly in the xlsx file locally.
+(It may take a while to execute it, since you want to go through all of the pages in the website.)
 ```
 python3 crawl.py -b % --save course.xlsx --semester 1101
 ```

@@ -229,13 +229,14 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
             select_df["Id"] = select_df["Id"].map(lambda x: '%-8s' % x)
             select_df["Class"] = select_df["Class"].map(lambda x: '%-2s' % x)
             select_df["Title"] = select_df["Title"].map(
-                lambda x: x.ljust(9, chr(12288)))
+                lambda x: x.ljust(13, chr(12288)))
             select_df["Instructor"] = select_df["Instructor"].map(
                 lambda x: x.ljust(4, chr(12288)))
             select_df["Classroom"] = select_df["Classroom"].map(
                 lambda x: '{0:{1}<6}'.format(x, chr(12288)))
             select_df["Time"] = select_df["Time"].map(
                 lambda x: '{0:{1}<8}'.format(x, chr(12288)))
+        pd.set_option("display.max_rows", None, "display.max_columns", None)
         print(select_df)
         if(self.args.save):
             try:
