@@ -1,3 +1,6 @@
 *.xlsx
 *.csv
 /data
+/__pycache__
+/images
+/reference
