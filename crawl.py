@@ -183,9 +183,9 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                         # some class is instructed by only one prof,so there is no class number.
                         if(course['cr_clas'] == ''):
                             course['cr_clas'] = "00"
-                        else:
-                            # bad course
-                            continue
+                        # else:
+                        #     # bad course
+                        #     continue
 
                         dict = {
                             "Id": course['cr_cono'],  # Curriculum Identity Number

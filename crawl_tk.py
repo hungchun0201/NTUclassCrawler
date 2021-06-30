@@ -11,35 +11,6 @@ import threading
 import sys
 
 
-class thread_with_trace(threading.Thread):
-    def __init__(self, *args, **keywords):
-        threading.Thread.__init__(self, *args, **keywords)
-        self.killed = False
-
-    def start(self):
-        self.__run_backup = self.run
-        self.run = self.__run
-        threading.Thread.start(self)
-
-    def __run(self):
-        sys.settrace(self.globaltrace)
-        self.__run_backup()
-        self.run = self.__run_backup
-
-    def globaltrace(self, frame, event, arg):
-        if event == 'call':
-            return self.localtrace
-        else:
-            return None
-
-    def localtrace(self, frame, event, arg):
-        if self.killed:
-            if event == 'line':
-                raise SystemExit()
-        return self.localtrace
-
-    def kill(self):
-        self.killed = True
 
 
 class Crawler():
@@ -248,11 +219,12 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                         course = classroom[session]["Info"][0]
                         # Add class number.
                         # some class is instructed by only one prof,so there is no class number.
+                        print(course['cr_clas'])
                         if(course['cr_clas'] == ''):
                             course['cr_clas'] = "00"
-                        else:
-                            # bad course
-                            continue
+                        # else:
+                        #     # bad course
+                        #     continue
 
                         dict = {
                             # Curriculum Identity Number
@@ -348,8 +320,8 @@ For example, if you type "--search-opt Title=積體電路,Classroom=電二", you
                 self.args.save = None
             # print(threading.current_thread())
             # print(threading.enumerate())
-            thread_with_trace(target=self.crawl).start()
-            # threading.Thread(target=self.crawl).start()
+            # thread_with_trace(target=self.crawl).start()
+            threading.Thread(target=self.crawl).start()
 
         window = tk.Tk()
         window.title('台大偷跑課表整理小工具')
