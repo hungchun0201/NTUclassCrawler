@@ -37,7 +37,7 @@ Download ```dist/crawl_tk.exe``` and execute it directly.
 ## 2. Create virtual env in Anaconda (For Windows/Mac/Linux)
 下載```crawl_tk.py```以及```requirements.txt```後，在Anaconda中建立python 3.7環境。並執行以下指令
 
-After you download the files, create a virtual env with python=3.7 in Anaconda. Then, execurte
+After you download the files, create a virtual env with python=3.7 in Anaconda. Then, execute
 ```
 pip install -r requirements.txt
 python crawl_tk.py
