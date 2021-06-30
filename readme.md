@@ -1,20 +1,52 @@
-# NTU Class Crawler
+# NTU Class Crawler - 台大上課教室看版偷跑課表整理小工具
 
-## Introduction
+# Introduction
+
+雖然[上課教室看版](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)會先偷跑下學期的一些課表，但因為系統設計的關係，查找其實不易。此程式會從[上課教室看版](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)上面爬取下學期的課表，並有條理地整理，因此可以在台大課程網更新前就先大致安排你的課表。雖然上面的資訊不完整，但若是想要事先安排課表的話還是相當方便。
 
 This is a program that can crawl data of classes in next semester from
-"classroom management system(上課教室看板)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
+"classroom management system[上課教室看版](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
 complete on the website, it is still a useful and helpful tool if you want to
-organize the curriculum for next semester in advance. The reference link is
-http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new.
-<img src="./sample.gif">
+organize the curriculum for next semester in advance. 
+
+你可以選擇使用圖形化介面，也可以直接在termial中執行程式
+
+You can execute this program either in GUI or terminal.
 
 ## Environment
 <a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
 
 
-> <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C pandas %7C argparse-blue">
+> <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C tkinter %7C openpyxl %7C lxml %7C pandas-blue">
 
+# Usage - GUI (Recommended)
+<img src="./sample_GUI.gif">
+
+共有兩種方法可執行GUI程式。
+
+There are two ways to use this program.
+
+## 1. Execute crawl_tk.exe directly (For Windows only)
+直接下載dist/crawl_tk.exe並執行即可。(**此方法不用裝python也可以使用，推薦**)
+
+Download ```dist/crawl_tk.exe``` and execute it directly.
+
+## 2. Create virtual env in Anaconda (For Windows/Mac/Linux)
+下載```crawl_tk.py```以及```reqirements.txt```後，在Anaconda中建立python 3.7環境。並執行以下指令
+
+After you download the files, create a virtual env with python=3.7 in Anaconda. Then, execurte
+```
+pip install -r reqirements.txt
+python crawl_tk.py
+```
+
+# Usage - terminal 
+
+<img src="./sample.gif">
+
+```
+python3 crawl.py -b [building] --semseter [semester]
+```
 
 ## Optional Arguments
 ```
