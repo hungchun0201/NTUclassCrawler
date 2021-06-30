@@ -19,7 +19,8 @@ You can execute this program either in GUI or terminal.
 
 > <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C tkinter %7C openpyxl %7C lxml %7C pandas-blue">
 
-# Usage - GUI (Recommended)
+# How to use - GUI (Recommended)
+## Demo
 <img src="./sample_GUI.gif">
 
 共有兩種方法可執行GUI程式。
@@ -27,20 +28,21 @@ You can execute this program either in GUI or terminal.
 There are two ways to use this program.
 
 ## 1. Execute crawl_tk.exe directly (For Windows only)
-直接下載dist/crawl_tk.exe並執行即可。(**此方法不用裝python也可以使用，推薦**)
+> **此方法不用裝python也可以使用，直接執行就好很方便，推薦一般人使用**
+直接下載```dist/crawl_tk.exe```並執行即可。
 
 Download ```dist/crawl_tk.exe``` and execute it directly.
 
 ## 2. Create virtual env in Anaconda (For Windows/Mac/Linux)
-下載```crawl_tk.py```以及```reqirements.txt```後，在Anaconda中建立python 3.7環境。並執行以下指令
+下載```crawl_tk.py```以及```requirements.txt```後，在Anaconda中建立python 3.7環境。並執行以下指令
 
 After you download the files, create a virtual env with python=3.7 in Anaconda. Then, execurte
 ```
-pip install -r reqirements.txt
+pip install -r requirements.txt
 python crawl_tk.py
 ```
 
-# Usage - terminal 
+# How to use - terminal 
 
 <img src="./sample.gif">
 
