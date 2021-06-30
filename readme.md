@@ -29,6 +29,7 @@ There are two ways to use this program.
 
 ## 1. Execute crawl_tk.exe directly (For Windows only)
 > **此方法不用裝python也可以使用，直接執行就好很方便，推薦一般人使用**
+
 直接下載```dist/crawl_tk.exe```並執行即可。
 
 Download ```dist/crawl_tk.exe``` and execute it directly.
