@@ -25,7 +25,10 @@ def parse_args():
 @st.cache(hash_funcs={type(st.secrets): _hash_st_secrets})
 def read_df(local=False):
     if local:
-        course_df = pd.read_csv('course.csv', index_col=0)
+        try:
+            course_df = pd.read_csv('course.csv', index_col=0)
+        except pd.errors.EmptyDataError:
+            print('Local course.csv not found, please try `python run_app.py --force` to fetch all data available.')
     else:
         course_df = pd.read_csv(
             st.secrets['db']['url'], index_col=0)

@@ -48,10 +48,12 @@ A mirror of the site is already avaible at https://share.streamlit.io/icheft/ntu
             if self.args.force:
                 os.system(
                     f'python3 crawl.py -b % --save course.xlsx --semester {self.args.semester}')
-            print(f'course.xlsx file already exists')
+            else:
+                print(f'course.xlsx file already exists')
 
         if self.args.toCSV:
             pd.read_excel('course.xlsx', index_col=0).to_csv('course.csv')
+            print(f'course.csv file generated successfully')
 
         if self.args.deploy:
             print('Ready to deploy...')
