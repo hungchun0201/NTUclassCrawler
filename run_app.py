@@ -52,13 +52,16 @@ A mirror of the site is already avaible at https://share.streamlit.io/icheft/ntu
                 print(f'course.xlsx file already exists')
 
         if self.args.toCSV:
-            pd.read_excel('course.xlsx', index_col=0).to_csv('course.csv')
+            pd.read_excel('course.xlsx', index_col=0,
+                          engine='openpyxl').to_csv('course.csv')
             print(f'course.csv file generated successfully')
 
         if self.args.deploy:
             print('Ready to deploy...')
             if not os.path.isfile('course.csv') or self.args.force:
-                pd.read_excel('course.xlsx', index_col=0).to_csv('course.csv')
+                pd.read_excel('course.xlsx', index_col=0,
+                              engine='openpyxl').to_csv('course.csv')
+                print(f'course.csv file generated successfully')
 
             os.system(f'streamlit run app.py -- -l')
 
