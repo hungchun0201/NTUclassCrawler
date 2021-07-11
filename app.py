@@ -127,7 +127,23 @@ def main():
             else:
                 display_df = df[(df['Title'].str.contains(search_txt) | df['Instructor'].str.contains(
                     search_txt) | df['Id'].str.contains(search_txt)) & course_df['raw_day'].apply(in_list, args=(date_opt,))][view_options]
-    st.table(display_df)
+
+    st.write("""<style>
+    tr:hover {background-color:#50536b42;
+    table {
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        white-space: nowrap;
+    }
+</style>""", unsafe_allow_html=True)
+
+    st.write(f"""<div style="overflow:scroll; justify-content: center;">
+{display_df.to_html()}
+</div>""", unsafe_allow_html=True)
+
+    # <div class="styledTable" style="overflow:scroll">
+    # </div>
+
     st.balloons()
     # pd.set_option('display.max_colwidth', 40)
 
