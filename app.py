@@ -16,7 +16,6 @@ def _hash_st_secrets(secrets) -> int:
 
 @st.cache(hash_funcs={type(st.secrets): _hash_st_secrets})
 def read_df():
-    print('rerutn')
     course_df = pd.read_csv(
         st.secrets['db']['url'], index_col=0)
     return course_df
