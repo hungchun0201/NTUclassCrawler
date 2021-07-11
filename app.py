@@ -2,11 +2,27 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import re
+import json
 
-course_df = pd.read_excel('course.xlsx', index_col=0)
+
+def _hash_st_secrets(secrets) -> int:
+    """                                                                                                  
+    An st.cache hash_func to hash st.secrets objects. The hash should change
+    whenever the underyling secrets object changes.
+    """
+    hash_just_the_secrets = hash(json.dumps(st.secrets._secrets))
+    return hash_just_the_secrets
 
 
-def pre_processing():
+@st.cache(hash_funcs={type(st.secrets): _hash_st_secrets})
+def read_df():
+    print('rerutn')
+    course_df = pd.read_csv(
+        st.secrets['db']['url'], index_col=0)
+    return course_df
+
+
+def pre_processing(course_df):
     course_df['Time'] = course_df.Time.apply(lambda x: x.strip())
     course_df['Classroom'] = course_df.Classroom.apply(lambda x: x.strip())
     course_df['raw_day'] = course_df['Time'].apply(
@@ -17,6 +33,7 @@ def pre_processing():
     #     lambda x: re.findall(r'[^\u4e00-\u9fff]+', x)[0])
     course_df['Title'] = course_df.Title.apply(lambda x: x.strip())
     # course_df['Period'] = course_df.Period.apply(lambda x: x.strip())
+    return course_df
 
 
 def main():
@@ -27,8 +44,9 @@ def main():
         layout="wide",
         initial_sidebar_state="expanded",
     )
-
-    pre_processing()
+    with st.spinner('讀取資料中⋯'):
+        course_df = read_df()
+        course_df = pre_processing(course_df.copy())
     st.write("""
     # 台大 110 年課表查詢""")
 
@@ -77,7 +95,7 @@ def main():
     other_info = st.beta_expander('其他資訊 🔗')
     with other_info:
         st.markdown("""一些常用連結：
-                    
+
 + [PTT NTUcourse 看板](https://www.ptt.cc/bbs/NTUcourse/index.html)
 + [Original Repo](https://github.com/hungchun0201/NTUclassCrawler)
 + [台大課程網](https://nol.ntu.edu.tw/nol/guest/index.php)

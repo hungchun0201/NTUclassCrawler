@@ -4,5 +4,6 @@
 /__pycache__
 /images
 /reference
+secrets.toml
 
 *test.ipynb
