@@ -159,28 +159,28 @@ This part serves for people who want to deploy locally.
 
 
 
-
-1. Make sure you've installed all the required packages in the desired environment (`pipenv` uses less resources than Anaconda)
-2. Run the following command (default)
+1. Git clone this repository
+2. Make sure you've installed all the required packages in the desired environment (`pipenv` uses less resources than Anaconda)
+3. Run the following command (default)
 
     ```sh
     python3 run_app.py --deploy
     ```
-3. Some optional commands are listed below:
+4. Some optional commands are listed below:
 
-  ```
-  optional arguments:
-  -h, --help           show this help message and exit
-  --semester SEMESTER  Select the semester you want to query
-  --toCSV              Export csv file
-  -d, --deploy         Deploy your site locally
-  -f, --force          Override current course.xlsx file
-  ```
+    ```
+    optional arguments:
+    -h, --help           show this help message and exit
+    --semester SEMESTER  Select the semester you want to query
+    --toCSV              Export csv file
+    -d, --deploy         Deploy your site locally
+    -f, --force          Override current course.xlsx file
+    ```
 
-  + If `deploy` command is not passed, the app won't be deployed.
-  + Beware of the `--force` command as it may take **super long time** to crawl the data from scratch
-  + If `course.xlsx` is not found at runtime, the program will automatically start crawling
-4. If done successfully, you shall see something like this:
+    + If `deploy` command is not passed, the app won't be deployed.
+    + Beware of the `--force` command as it may take **super long time** to crawl the data from scratch
+    + If `course.xlsx` is not found at runtime, the program will automatically start crawling
+5. If done successfully, you shall see something like this:
 
     ```
     course.xlsx file already exists
