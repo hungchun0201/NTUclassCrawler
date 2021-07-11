@@ -1,19 +1,7 @@
 # NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具
 
-+ [NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具](#ntu-class-crawler---台大上課教室看板偷跑課表整理小工具)
-  + [Introduction](#introduction)
-    + [Environment](#environment)
-  + [How to Use](#how-to-use)
-    + [GUI (Recommended)](#gui-recommended)
-      + [Demo](#demo)
-      + [1. Execute crawl_tk.exe directly (For Windows only)](#1-execute-crawl_tkexe-directly-for-windows-only)
-      + [2. Create virtual env in Anaconda (For Windows/Mac/Linux)](#2-create-virtual-env-in-anaconda-for-windowsmaclinux)
-    + [Terminal](#terminal)
-      + [Optional Arguments](#optional-arguments)
-      + [Examples](#examples)
-    + [Local Wep App Deployment](#local-wep-app-deployment)
-      + [Demo](#demo-1)
-      + [Steps](#steps)
+[TOC]
+
 ## Introduction
 
 雖然[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)會先偷跑下學期的一些課表，但因為系統設計的關係，查找其實不易。此程式會從[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)上面爬取下學期的課表，並有條理地整理，因此可以在台大課程網更新前就先大致安排你的課表。雖然上面的資訊不完整，但若是想要事先安排課表的話還是相當方便。
@@ -27,17 +15,20 @@ organize the curriculum for next semester in advance.
 
 You can execute this program either in GUI or terminal. In addition, the website version of this program is served [here](https://share.streamlit.io/icheft/ntuclasscrawler/app.py) so that you won't have to clone and build from scratch.
 
+## Online Service
+> Designed by @icheft
 
+👉🏽 [傳送門](https://share.streamlit.io/icheft/ntuclasscrawler/app.py) · [Web App Link](https://share.streamlit.io/icheft/ntuclasscrawler/app.py)
 
+## How to Use Locally
 ### Environment
-<a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> and the following libraries are required.
+<a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7-green.svg"></a> 
 
-
-> <img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C tkinter %7C openpyxl %7C lxml %7C pandas-blue">
-
-
-## How to Use
 ### GUI (Recommended)
+<img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C tkinter %7C openpyxl %7C lxml %7C pandas-blue">
+
+> Tested on Windows 10
+
 #### Demo
 <img src="./img/sample_GUI.gif">
 
@@ -63,7 +54,11 @@ python crawl_tk.py
 ```
 
 ### Terminal 
+<img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C  openpyxl %7C lxml %7C pandas-blue">
 
+> Tested on Windows 10
+
+#### Demo
 <img src="./img/sample.gif">
 
 ```
@@ -134,6 +129,9 @@ python3 crawl.py -b % --save course.xlsx --semester 1101
 
 If the server held in the Department of Information Management fails or you want to deploy this web app locally, here are some tips to get you started.
 
+<img src="https://img.shields.io/badge/python-requests %7C beautifulSoup4 %7C streamlit %7C openpyxl %7C lxml %7C pandas-blue">
+
+> Tested on macOS
 
 #### Demo
 
@@ -161,6 +159,12 @@ This part serves for people who want to deploy locally.
 
 1. Git clone this repository
 2. Make sure you've installed all the required packages in the desired environment (`pipenv` uses less resources than Anaconda)
+    ```sh
+    pip install pipenv
+    pipenv --three
+    pipenv install --dev
+    pipenv shell
+    ```
 3. Run the following command (default)
 
     ```sh
