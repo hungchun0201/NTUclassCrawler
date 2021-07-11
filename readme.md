@@ -1,6 +1,20 @@
 # NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具
 
-[TOC]
++ [NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具](#ntu-class-crawler---台大上課教室看板偷跑課表整理小工具)
+  + [Introduction](#introduction)
+  + [Online Service](#online-service)
+  + [How to Use Locally](#how-to-use-locally)
+    + [GUI (Recommended)](#gui-recommended)
+      + [Demo](#demo)
+      + [1. Execute crawl_tk.exe directly (For Windows only)](#1-execute-crawl_tkexe-directly-for-windows-only)
+      + [2. Create virtual env in Anaconda (For Windows/Mac/Linux)](#2-create-virtual-env-in-anaconda-for-windowsmaclinux)
+    + [Terminal](#terminal)
+      + [Demo](#demo)
+      + [Optional Arguments](#optional-arguments)
+      + [Examples](#examples)
+    + [Local Wep App Deployment](#local-wep-app-deployment)
+      + [Demo](#demo-1)
+      + [Steps](#steps)
 
 ## Introduction
 
