@@ -5,6 +5,7 @@
 /images
 /reference
 secrets.toml
+Pipfile.lock
 
 *test.ipynb
 *test.py
