@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import re
+import argparse
 import json
 
 
@@ -14,10 +15,20 @@ def _hash_st_secrets(secrets) -> int:
     return hash_just_the_secrets
 
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-l", "--local", help="Deploy your site locally", action="store_true")
+    return parser.parse_args()
+
+
 @st.cache(hash_funcs={type(st.secrets): _hash_st_secrets})
-def read_df():
-    course_df = pd.read_csv(
-        st.secrets['db']['url'], index_col=0)
+def read_df(local=False):
+    if local:
+        course_df = pd.read_csv('course.csv', index_col=0)
+    else:
+        course_df = pd.read_csv(
+            st.secrets['db']['url'], index_col=0)
     return course_df
 
 
@@ -35,7 +46,7 @@ def pre_processing(course_df):
     return course_df
 
 
-def main():
+def main(local=False):
 
     st.set_page_config(
         page_title="Simple NTU Course Viewer",
@@ -44,7 +55,7 @@ def main():
         initial_sidebar_state="expanded",
     )
     with st.spinner('讀取資料中⋯'):
-        course_df = read_df()
+        course_df = read_df(local)
         course_df = pre_processing(course_df.copy())
     st.write("""
     # 台大 110 年課表查詢""")
@@ -148,4 +159,9 @@ def main():
     # pd.set_option('display.max_colwidth', 40)
 
 
-main()
+if __name__ == '__main__':
+    args = parse_args()
+    if args.local:
+        main(local=True)
+    else:
+        main()
