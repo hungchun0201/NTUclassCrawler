@@ -1,6 +1,6 @@
-# NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具
+# NTU Class Crawler - 台大上課教室看板課表整理小工具
 
-+ [NTU Class Crawler - 台大上課教室看板偷跑課表整理小工具](#ntu-class-crawler---台大上課教室看板偷跑課表整理小工具)
++ [NTU Class Crawler - 台大上課教室看板課表整理小工具](#ntu-class-crawler---台大上課教室看板課表整理小工具)
   + [Introduction](#introduction)
   + [Online Service](#online-service)
   + [How to Use Locally](#how-to-use-locally)
@@ -18,7 +18,7 @@
 
 ## Introduction
 
-雖然[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)會先偷跑下學期的一些課表，但因為系統設計的關係，查找其實不易。此程式會從[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)上面爬取下學期的課表，並有條理地整理，因此可以在台大課程網更新前就先大致安排你的課表。雖然上面的資訊不完整，但若是想要事先安排課表的話還是相當方便。
+雖然[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)會先顯示下學期的一些課表，但因為系統設計的關係，查找其實不易。此程式會從[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)上面爬取下學期的課表，並有條理地整理，因此可以在台大課程網更新前就先大致安排你的課表。雖然上面的資訊不完整，但若是想要事先安排課表的話還是相當方便。
 
 This is a program that can crawl data of classes in next semester from
 "classroom management system[上課教室看板](http://gra206.aca.ntu.edu.tw/classrm/index.php/acarm/webcr-use1-new)". With this program, you can arrange your classes before they come out at NTU online. While the information is not quite
