@@ -21,7 +21,7 @@ soupsieve = "==2.2.1"
 tk = "==0.1.0"
 urllib3 = "==1.26.6"
 wincertstore = "==0.2"
-streamlit = "==0.84.0"
+streamlit = "==1.11.1"
 
 [dev-packages]
 
