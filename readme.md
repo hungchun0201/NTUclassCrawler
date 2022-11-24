@@ -29,10 +29,6 @@ organize the curriculum for next semester in advance.
 
 You can execute this program either in GUI or terminal. In addition, the website version of this program is served [here](https://share.streamlit.io/icheft/ntuclasscrawler/app.py) so that you won't have to clone and build from scratch.
 
-## Online Service
-> Designed by @icheft
-
-👉🏽 [傳送門](https://share.streamlit.io/icheft/ntuclasscrawler/app.py) · [Web App Link](https://share.streamlit.io/icheft/ntuclasscrawler/app.py)
 
 ## How to Use Locally
 ### Environment
